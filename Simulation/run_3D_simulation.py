@@ -11,13 +11,12 @@ import matplotlib.pyplot as plt
 import time
 import cProfile
 
-from trajectory import Trajectory
-from ctrl import Control
-from quadFiles.quad import Quadcopter
-from utils.windModel import Wind
-import utils
-import config
-from utils.EKF import EKF_IMU
+from . import utils, config
+from .ctrl import Control
+from .trajectory import Trajectory
+from .quadFiles.quad import Quadcopter
+from .utils.windModel import Wind
+from .utils.EKF import EKF_IMU
 
 def quad_sim(t, Ts, quad, ctrl, wind, traj):
     
