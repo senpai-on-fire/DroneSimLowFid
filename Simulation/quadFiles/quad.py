@@ -20,10 +20,10 @@ K = 0  # Kalman gain
 Q = 8.9  # Process noise covariance
 R = 500 ** 2  # Measurement noise covariance
 estimated_pressure = None  # Initial estimated pressure
-excel_path = "/home/local/ASURITE/binxu4/Videos/Screencasts/output.xlsx"  # Change this to your actual file path
-df = pd.read_excel(excel_path, header=None)  # Assuming no headers
-numerical_data = df.to_numpy()
-upsampled_data = np.repeat(numerical_data, 60, axis=0)
+#excel_path = "/home/local/ASURITE/binxu4/Videos/Screencasts/output.xlsx"  # Change this to your actual file path
+#df = pd.read_excel(excel_path, header=None)  # Assuming no headers
+#numerical_data = df.to_numpy()
+#upsampled_data = np.repeat(numerical_data, 60, axis=0)
 
 
 
@@ -320,10 +320,10 @@ class Quadcopter:
         prev_vel   = self.vel
         prev_omega = self.omega
         scale = 1
-        if t > 35 and t <= 38 :
-            cmd = cmd - 100
-        if t > 38 :
-            cmd = np.array([scale*upsampled_data[np.floor((t-60)/Ts).astype(int),0], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),1], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),2], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),3]])
+        #if t > 35 and t <= 38 :
+        #    cmd = cmd - 100
+        #if t > 38 :
+        #    cmd = np.array([scale*upsampled_data[np.floor((t-60)/Ts).astype(int),0], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),1], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),2], scale*upsampled_data[np.floor((t-60)/Ts).astype(int),3]])
         self.integrator.set_f_params(cmd, wind)
         self.state = self.integrator.integrate(t, t+Ts)
         #if self.state[2] < 0 :
